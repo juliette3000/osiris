@@ -36,3 +36,30 @@ CREATE TABLE ebm_item_detail (
   PRIMARY KEY (pk_item_detail),
   KEY fk_item (fk_item)
 ) ENGINE=InnoDB AUTO_INCREMENT=486 DEFAULT CHARSET=utf8;
+
+CREATE TABLE ebm_saisie (
+  pk_saisie int(10) NOT NULL AUTO_INCREMENT,
+  Numid int(10) NOT NULL,
+  interven int(10) NOT NULL,
+  dateheure datetime NOT NULL,
+  fk_grille int(10) NOT NULL,
+  date_releve date NOT NULL,
+  PRIMARY KEY (pk_saisie),
+  KEY fk_grille (fk_grille)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE ebm_valeurs (
+  pk_valeur int(10) NOT NULL AUTO_INCREMENT,
+  fk_saisie int(10) NOT NULL,
+  fk_grille int(10) NOT NULL,
+  fk_item int(10) NOT NULL,
+  valeur varchar(100) DEFAULT NULL,
+  valeur1 varchar(100) DEFAULT NULL,
+  valeur2 varchar(50) DEFAULT NULL,
+  valeur3 varchar(50) DEFAULT NULL,
+  valeur4 varchar(50) DEFAULT NULL,
+  PRIMARY KEY (pk_valeur),
+  KEY fk_saisie (fk_saisie),
+  KEY fk_grille (fk_grille),
+  KEY fk_item (fk_item)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
